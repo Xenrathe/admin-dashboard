@@ -16,10 +16,10 @@ body {
   color: white;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 40vh;
+  height: 100vh;
 
   display: grid;
-  grid-template-rows: 2fr 5fr 3fr;
+  grid-template-rows: 2fr 5fr 3fr 10fr;
   align-content: center;
   font-size: 20px;
   font-weight: bold;
@@ -75,6 +75,8 @@ body {
   grid-row: 1 / 2;
   background-color: white;
   padding: 20px 40px;
+  box-shadow: 0px 2px 6px rgb(105, 105, 105);
+  margin-bottom:6px;
 
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -152,21 +154,89 @@ body {
 .content {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
-  background-color: lightgray;
+  background-color: rgb(226, 225, 233);
 
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3.5fr 1fr;
   grid-template-rows: .5fr 3fr .5fr 3fr;
 }
 
-.scheme-title{
+#scheme-title{
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+}
+
+#announcement-title, #trending-title, #scheme-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  align-self: end;
 }
 
 .scheme-container {
   grid-column: 1 / 2;
   grid-row: 2 / 5;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+  align-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.scheme-container, #scheme-title, #announcement-title, #trending-title {
+  padding: 5px 15px;
+}
+
+.scheme{
+  background-color: white;
+  border-left-color: orange;
+  border-left-style: solid;
+  border-left-width: 6px;
+  border-radius: 6px;
+  padding: 25px 30px 10px 15px;
+  box-shadow: 8px 8px 8px rgb(139, 139, 139);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.scheme:hover{
+  box-shadow: 10px 10px 10px rgb(139, 139, 139);
+  position: relative;
+  top: 2px;
+}
+
+.s-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+@property --round {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+.s-content {
+  flex: 1;
+  color: rgb(100, 100, 100);
+  overflow: hidden;
+}
+
+.s-buttons {
+  align-self: end;
+  justify-self: end;
+}
+
+.scheme img {
+  width: 24px;
+  height: 24px;
+  filter: invert(58%) sepia(93%) saturate(543%) hue-rotate(357deg) brightness(38%) contrast(108%);
+}
+
+.scheme a:hover {
+  filter: invert(58%) sepia(93%) saturate(543%) hue-rotate(357deg) brightness(98%) contrast(108%);
 }
 
 .avatar, .trend img {
@@ -175,7 +245,7 @@ body {
   place-self: center;
 }
 
-.announcement-title {
+#announcement-title {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
@@ -185,7 +255,34 @@ body {
   grid-row: 2 / 3;
 }
 
-.trending-title {
+.announcement-container, .trending-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  background-color: white;
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 8px 8px 8px rgb(139, 139, 139);
+}
+
+.announcement-container hr {
+  height: 0px;
+  width: 100%;
+}
+
+.anc-title{
+  font-weight: bold;
+}
+
+.anc-title, .anc-text{
+  font-size: calc(0.4em + 0.5vw);
+}
+
+#trending-title {
   grid-column: 2 / 3;
   grid-row: 3 / 4;
 }
@@ -193,9 +290,17 @@ body {
 .trending-container {
   grid-column: 2 / 3;
   grid-row: 4 / 5;
+
+  margin-bottom: 20px;
 }
 
-.scheme img {
-  width: 25px;
-  height: 25px;
+.trend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: calc(0.4em + 0.5vw);
+}
+
+.trend-user {
+  font-weight: bold;
 }
